@@ -9,9 +9,10 @@ jobs:
         uses: jroehl/gsheet.action@v2.0.0 # you can specify '@release' to always have the latest changes
         with:
           spreadsheetId: 1QU6NOS5hNd13Gpbxb8dU3PQpu20dLoIaK8I1697HdJU
+          
           commands: | # list of commands, specified as a valid JSON string
             [
-              { "command": "appendData", "args": { "data": [["A1", "A2", "A3"]] }}
+              { "command": "appendData", "args": { "data": [["A1", "A2", "A3"]], "worksheetTitle": "poc" }}
             ]
         env:
           GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
