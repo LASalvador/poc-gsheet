@@ -14,11 +14,12 @@ jobs:
           
           commands: | # list of commands, specified as a valid JSON string
             [
-              { "command": "appendData", "args": { "data": [["${{ toJSON(github) }}", "A2", "A3"]], "worksheetTitle": "poc", "minCol": 1 }}
+              { "command": "appendData", "args": { "data": [["$GITHUB_CONTEXT", "A2", "A3"]], "worksheetTitle": "poc", "minCol": 1 }}
             ]
         env:
           GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
           GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
+          GITHUB_CONTEXT: ${{ toJson(github) }}
       - name: dump results
         env:
           #  the output of the action can be found in ${{ steps.update_worksheet.outputs.results }}
