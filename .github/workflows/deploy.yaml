@@ -20,7 +20,6 @@ jobs:
         env:
           GSHEET_CLIENT_EMAIL: ${{ secrets.GSHEET_CLIENT_EMAIL }}
           GSHEET_PRIVATE_KEY: ${{ secrets.GSHEET_PRIVATE_KEY }}
-          GITHUB_CONTEXT: ${{ toJson(github) }}
       - name: dump results
         env:
           #  the output of the action can be found in ${{ steps.update_worksheet.outputs.results }}
