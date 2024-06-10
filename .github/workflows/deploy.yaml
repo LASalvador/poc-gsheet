@@ -1,10 +1,11 @@
 name: gsheet.action test
 on:
   pull_request:
-    types: [opened, reopened]
+    types: [closed]
 
 jobs:
-  fetch:
+  update_merge_spreadsheet:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - id: 'update_worksheet'
